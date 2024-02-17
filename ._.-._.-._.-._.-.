@@ -1,0 +1,36 @@
+local player = game.Players.LocalPlayer
+local originalPosition = player.Character.HumanoidRootPart.Position
+
+local destination = Vector3.new(10, 5, 0) 
+-- replace with your desired destination
+
+
+local tweenInfo = TweenInfo.new(
+    2, 
+-- duration in seconds
+
+    Enum.EasingStyle.QuadInOut,
+    Enum.EasingDirection.InOut,
+    0, 
+-- number of times to repeat (0 means play once)
+
+    false, 
+-- should the tween reverse back to the start?
+
+    0 
+-- delay before starting
+
+)
+
+local tween = game:GetService("TweenService"):Create(player.Character.HumanoidRootPart, tweenInfo, {
+    Position = destination
+})
+
+tween:Play()
+
+wait(2) 
+-- wait for the tween to complete
+
+
+player.Character.HumanoidRootPart.CFrame = CFrame.new(destination) 
+-- set the position to the destination
